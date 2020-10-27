@@ -1,6 +1,6 @@
 //DETALLE_VENTA
 package classes;
-
+//yanina
 //IMPORT
 import SQLconection.AdministradorDeConexiones;
 import java.sql.Connection;
