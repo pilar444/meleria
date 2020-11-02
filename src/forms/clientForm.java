@@ -5,7 +5,6 @@
  */
 package forms;
 
-import classes.Brand;
 import classes.Person;
 import java.util.logging.Level;
 import java.util.logging.Logger;
