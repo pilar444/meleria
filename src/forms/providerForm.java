@@ -1,4 +1,4 @@
-//yanina
+//yanina gonzalez
 package forms;
 
 import classes.Person;
