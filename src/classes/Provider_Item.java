@@ -219,10 +219,10 @@ public class Provider_Item {
         PreparedStatement actdPA = conn.prepareStatement(actPA);
 
         actdPA.setInt(1, this.getPersonalCode());
-        actdPA.setInt(1, this.getOrder());
-        actdPA.setBoolean(2, this.isLow());
-        actdPA.setInt(1, this.getItemCode());
-        actdPA.setInt(1, this.getResetPoint());
+        actdPA.setInt(2, this.getOrder());
+        actdPA.setBoolean(3, this.isLow());
+        actdPA.setInt(4, this.getItemCode());
+        actdPA.setInt(5, this.getResetPoint());
 
         actdPA.execute();
 

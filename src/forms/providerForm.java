@@ -132,6 +132,11 @@ public class providerForm extends javax.swing.JFrame {
         });
 
         postalCodeProviderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
+        postalCodeProviderComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                postalCodeProviderComboBoxActionPerformed(evt);
+            }
+        });
 
         adressProviderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
 
@@ -164,6 +169,11 @@ public class providerForm extends javax.swing.JFrame {
         });
 
         cancelProviderButton.setText("Cancelar");
+        cancelProviderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelProviderButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -389,6 +399,14 @@ public class providerForm extends javax.swing.JFrame {
             Logger.getLogger(trademarkAdd.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_addProviderButtonActionPerformed
+
+    private void postalCodeProviderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeProviderComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_postalCodeProviderComboBoxActionPerformed
+
+    private void cancelProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelProviderButtonActionPerformed
+        dispose();
+    }//GEN-LAST:event_cancelProviderButtonActionPerformed
 
     /**
      * @param args the command line arguments
