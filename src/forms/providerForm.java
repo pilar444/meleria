@@ -358,6 +358,7 @@ public class providerForm extends javax.swing.JFrame {
     private void addProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProviderButtonActionPerformed
         Person provider = new Person();
         provider.setName(nameProviderTextField.getText());
+        String nameCity = cityProviderComboBox.getSelectedItem().toString();
         //provider.setCityCode(Integer.parseInt(cityCodeProviderTextField.getText()));
         //provider.setStreetNumber(Integer.parseInt(streetNumberProviderTextField.getText()));
         provider.setPhone(Integer.parseInt(phoneProviderTextField.getText()));

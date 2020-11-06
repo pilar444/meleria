@@ -4,6 +4,7 @@ package classes;
 import SQLconection.AdministradorDeConexiones;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -72,6 +73,37 @@ public class City {
            if (null != conn)
               conn.close();
         }
+        
+        
     }
+    
+    public static City getByName (String nameCity) throws Exception{
+
+        City c = new City();
+        
+        Connection conn = null;
+        try {
+           conn = bs.getConnection(); //LO MISMO ACÁ
+           // realización de la consulta
+           String laConsulta = ("SELECT * from CIUDADES where CIU_NOMBRE= ? ");
+
+        PreparedStatement stmtlaConsulta = conn.prepareStatement(laConsulta);
+        stmtlaConsulta.setString(1, nameCity);
+        stmtlaConsulta.execute();
+
+        ResultSet rs = (ResultSet) stmtlaConsulta.getResultSet();
+        if (rs.next()) {
+            c.setCityCode(rs.getInt("CIU_CODCIU"));
+        }
+        } catch (SQLException e) {
+           // tratamiento de error
+        } finally {
+           if (null != conn)
+              conn.close();
+        }      
+        
+        return nom;
+     }
+    
     
 }
