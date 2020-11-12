@@ -71,7 +71,7 @@ public class SaleDetail {
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.executeQuery();
         ResultSet rs = (ResultSet) stmtlaConsulta.getResultSet();
-        SaledETAIL r = null;
+        SaleDetail r = null;
 
         while(rs.next()){
             /*

@@ -102,7 +102,7 @@ public class City {
               conn.close();
         }      
         
-        return nom;
+        return c;
      }
     
     
