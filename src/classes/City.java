@@ -94,6 +94,8 @@ public class City {
         ResultSet rs = (ResultSet) stmtlaConsulta.getResultSet();
         if (rs.next()) {
             c.setCityCode(rs.getInt("CIU_CODCIU"));
+            c.setLow(rs.getBoolean("CIU_BAJA"));
+            c.setName(rs.getString("CIU_NOMBRE"));
         }
         } catch (SQLException e) {
            // tratamiento de error
@@ -102,7 +104,7 @@ public class City {
               conn.close();
         }      
         
-        return nom;
+        return c;
      }
     
     
