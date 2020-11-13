@@ -50,6 +50,7 @@ public class clientForm extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         infoClientButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
+        facButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -259,7 +260,7 @@ public class clientForm extends javax.swing.JFrame {
                 deleteButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 333, 83, -1));
+        getContentPane().add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 83, -1));
 
         infoClientButton.setText("VER DETALLE");
         infoClientButton.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +268,7 @@ public class clientForm extends javax.swing.JFrame {
                 infoClientButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(infoClientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 333, -1, -1));
+        getContentPane().add(infoClientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, -1, -1));
 
         returnButton.setText("Volver");
         returnButton.addActionListener(new java.awt.event.ActionListener() {
@@ -276,6 +277,9 @@ public class clientForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(returnButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(678, 381, 83, -1));
+
+        facButton.setText("FACTURACIÓN");
+        getContentPane().add(facButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -367,6 +371,7 @@ public class clientForm extends javax.swing.JFrame {
     private javax.swing.JButton cityAddButton;
     private javax.swing.JComboBox<String> cityClientComboBox;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton facButton;
     private javax.swing.JButton infoClientButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
