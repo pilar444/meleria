@@ -164,7 +164,7 @@ public class itemAdd extends javax.swing.JFrame {
         heading.setName(headingTextField.getText());
         heading.setLow(false);
         try {
-            heading.insertarRubro();
+            heading.eliminarRubro();
         } catch (Exception ex) {
             Logger.getLogger(itemAdd.class.getName()).log(Level.SEVERE, null, ex);
         }
