@@ -1,6 +1,8 @@
 
 package forms;
 
+import classes.Item;
+
 
 public class articlesForm extends javax.swing.JFrame {
 
@@ -71,6 +73,11 @@ public class articlesForm extends javax.swing.JFrame {
         });
 
         jButton11.setText("eliminar");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setText("ver detalle");
 
@@ -173,6 +180,11 @@ public class articlesForm extends javax.swing.JFrame {
         main form = new main();
         form.setVisible(true);
     }//GEN-LAST:event_returnButtonActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        Item form = new Item();
+        //form.setVisible(true);
+    }//GEN-LAST:event_jButton11ActionPerformed
 
    
     public static void main(String args[]) {

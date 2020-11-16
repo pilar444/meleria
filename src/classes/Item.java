@@ -299,6 +299,34 @@ public class Item {
 
     }
         
+    //copié y pegue el metodo eliminar de la clase Brand
+    /*    public void deleteItem(String nameItem) throws Exception {
+        Item i = new Item ();
+        Connection conn = null;
+        try {
+           conn = bs.getConnection();
+           // realización de la consulta
+           // Arma la sentencia de eliminacion
+        String laEliminacion = ("DELETE FROM ARTICULOS WHERE ART_NOMBRE = ?");
+
+        // Informa la eliminacion a realizar
+        System.out.println(">>SQL: " + laEliminacion);
+
+        // Ejecuta la eliminacion
+        PreparedStatement stmtEliminacion = conn.prepareStatement(laEliminacion);
+        stmtEliminacion.setInt(1, this.getName());
+        stmtEliminacion.execute();
+
+        // Cierra el Statement
+        stmtEliminacion.close();
+        } catch (SQLException e) {
+           // tratamiento de error
+        } finally {
+           if (null != bs)
+              bs.close();
+        }          
+    }*/
+        
         
  
 }
