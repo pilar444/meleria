@@ -465,6 +465,10 @@ public class articlesAdd extends javax.swing.JFrame {
         newItem.setSalePrice(TOP_ALIGNMENT);
         newItem.setStock(ABORT);*/
         newItem.setLow(false); //si esta en falso, significa que esta habilitado
+
+        //newItem.save;
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
