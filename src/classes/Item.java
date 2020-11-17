@@ -103,7 +103,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * from ARTICULOS order by ART_CODART where ART_BAJA = 0"); //que este activo
+           String laConsulta = ("select * from articulos order by ART_CODART where ART_BAJA = 0"); //que este activo
 
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.executeQuery();
@@ -143,7 +143,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM ARTICULOS WHERE ART_NOMBRE = ? and ART_BAJA = 0");
+           String laConsulta = ("select * FROM articulos WHERE ART_NOMBRE = ? and ART_BAJA = 0");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setString(1, name);
         stmtlaConsulta.executeQuery();
@@ -177,7 +177,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM ARTICULOS WHERE ART_CODRUB = ? and ART_BAJA = 0");
+           String laConsulta = ("select * FROM articulos WHERE ART_CODRUB = ? and ART_BAJA = 0");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, headingCode);
         stmtlaConsulta.executeQuery();
@@ -211,7 +211,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM ARTICULOS WHERE ART_CODMARC = ? and ART_BAJA = 0");
+           String laConsulta = ("select * FROM articulos WHERE ART_CODMARC = ? and ART_BAJA = 0");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, brandCode);
         stmtlaConsulta.executeQuery();
@@ -245,7 +245,7 @@ public class Item {
            conn = bs.getConnection();
            // realización de la consulta
                   
-        String laInsercion = "INSERT INTO `ARTICULOS` (`ART_CODART` , `ART_NOMBRE`, `ART_CODRUB`, `ART_STOCK`,`ART_PRECIOVENT`,`ART_PRECIOCOST`,`ART_OBSERV`, `ART_CODMARC`, 'ART_BAJA')" +
+        String laInsercion = "INSERT INTO `articulos` (`ART_CODART` , `ART_NOMBRE`, `ART_CODRUB`, `ART_STOCK`,`ART_PRECIOVENT`,`ART_PRECIOCOST`,`ART_OBSERV`, `ART_CODMARC`, 'ART_BAJA')" +
                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmtInsercion = conn.prepareStatement(laInsercion);
@@ -283,7 +283,7 @@ public class Item {
            // realización de la consulta
            // Arma la sentencia de actualizacion
            // RECORDAR WHERE ART_BAJA=0
-        String laActualizacion = "UPDATE ARTICULOS " +
+        String laActualizacion = "UPDATE articulos " +
                                  "SET `ART_CODART`=?, `ART_NOMBRE`=?, `ART_CODRUB`=?,`ART_STOCK`=?,`ART_PRECIOVENT`=?,`ART_PRECIOCOST`=?, `ART_OBSERV`=?,`ART_CODMARC`=? ";
 
         PreparedStatement stmtlaActualizacion = conn.prepareStatement(laActualizacion);
@@ -318,7 +318,7 @@ public class Item {
            conn = bs.getConnection();
            // realización de la consulta
            // Arma la sentencia de eliminacion
-        String laEliminacion = ("UPDATE ARTICULOS SET ART_BAJA = ? WHERE ART_COD = ?");
+        String laEliminacion = ("UPDATE articulos SET ART_BAJA = ? WHERE ART_COD = ?");
 
         // Informa la eliminacion a realizar
         System.out.println(">>SQL: " + laEliminacion);
