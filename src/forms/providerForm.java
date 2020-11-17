@@ -19,24 +19,16 @@ public class providerForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         nameProviderTextField = new javax.swing.JTextField();
         phoneProviderTextField = new javax.swing.JTextField();
-        cbuProviderTextField = new javax.swing.JTextField();
-        cuilProviderTextField = new javax.swing.JTextField();
         cityProviderComboBox = new javax.swing.JComboBox<>();
-        postalCodeProviderComboBox = new javax.swing.JComboBox<>();
         adressProviderComboBox = new javax.swing.JComboBox<>();
-        postalCodeAddButton = new javax.swing.JButton();
         cityAddButton = new javax.swing.JButton();
         adressAddButton = new javax.swing.JButton();
         addProviderButton = new javax.swing.JButton();
         cancelProviderButton = new javax.swing.JButton();
-        returnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,27 +40,9 @@ public class providerForm extends javax.swing.JFrame {
 
         jLabel4.setText("Ciudad:");
 
-        jLabel5.setText("Código Postal:");
-
         jLabel6.setText("Dirección:");
 
         jLabel7.setText("Teléfono:");
-
-        jLabel9.setText("CBU:");
-
-        jLabel10.setText("CUIT/CUIL:");
-
-        cbuProviderTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbuProviderTextFieldActionPerformed(evt);
-            }
-        });
-
-        cuilProviderTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cuilProviderTextFieldActionPerformed(evt);
-            }
-        });
 
         cityProviderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
         cityProviderComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -77,21 +51,7 @@ public class providerForm extends javax.swing.JFrame {
             }
         });
 
-        postalCodeProviderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
-        postalCodeProviderComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                postalCodeProviderComboBoxActionPerformed(evt);
-            }
-        });
-
         adressProviderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione.." }));
-
-        postalCodeAddButton.setText("+");
-        postalCodeAddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                postalCodeAddButtonActionPerformed(evt);
-            }
-        });
 
         cityAddButton.setText("+");
         cityAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,44 +86,38 @@ public class providerForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9))
-                                .addGap(36, 36, 36))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6))
+                                .addGap(36, 36, 36)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameProviderTextField)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(adressProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(adressAddButton))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(cityProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cityAddButton)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(28, 28, 28)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cuilProviderTextField)
-                            .addComponent(nameProviderTextField)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(postalCodeProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(postalCodeAddButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(adressProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(adressAddButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cityProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cityAddButton))
-                            .addComponent(phoneProviderTextField)
-                            .addComponent(cbuProviderTextField)))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2)
+                                .addComponent(jLabel7)
+                                .addGap(37, 37, 37)
+                                .addComponent(phoneProviderTextField))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(74, 74, 74)
                         .addComponent(addProviderButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelProviderButton)))
                 .addContainerGap())
         );
@@ -183,94 +137,48 @@ public class providerForm extends javax.swing.JFrame {
                     .addComponent(cityAddButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(postalCodeProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(postalCodeAddButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
                     .addComponent(adressProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adressAddButton))
+                    .addComponent(adressAddButton)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(phoneProviderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(cbuProviderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(cuilProviderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addProviderButton)
                     .addComponent(cancelProviderButton))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        returnButton.setText("Volver");
-        returnButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(returnButton)
-                .addGap(22, 22, 22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbuProviderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbuProviderTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbuProviderTextFieldActionPerformed
-
-    private void cuilProviderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuilProviderTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cuilProviderTextFieldActionPerformed
-
     private void cityProviderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityProviderComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cityProviderComboBoxActionPerformed
-
-    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
-        main form = new main();
-        form.setVisible(true);
-    }//GEN-LAST:event_returnButtonActionPerformed
 
     private void cityAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityAddButtonActionPerformed
         cityAdd form = new cityAdd();
         form.setVisible(true);
     }//GEN-LAST:event_cityAddButtonActionPerformed
-
-    private void postalCodeAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeAddButtonActionPerformed
-        postalCodeAdd form = new postalCodeAdd();
-        form.setVisible(true);
-    }//GEN-LAST:event_postalCodeAddButtonActionPerformed
 
     private void adressAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adressAddButtonActionPerformed
         adressAdd form = new adressAdd();
@@ -292,10 +200,6 @@ public class providerForm extends javax.swing.JFrame {
             Logger.getLogger(trademarkAdd.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_addProviderButtonActionPerformed
-
-    private void postalCodeProviderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postalCodeProviderComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_postalCodeProviderComboBoxActionPerformed
 
     private void cancelProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelProviderButtonActionPerformed
         dispose();
@@ -341,23 +245,15 @@ public class providerForm extends javax.swing.JFrame {
     private javax.swing.JButton adressAddButton;
     private javax.swing.JComboBox<String> adressProviderComboBox;
     private javax.swing.JButton cancelProviderButton;
-    private javax.swing.JTextField cbuProviderTextField;
     private javax.swing.JButton cityAddButton;
     private javax.swing.JComboBox<String> cityProviderComboBox;
-    private javax.swing.JTextField cuilProviderTextField;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameProviderTextField;
     private javax.swing.JTextField phoneProviderTextField;
-    private javax.swing.JButton postalCodeAddButton;
-    private javax.swing.JComboBox<String> postalCodeProviderComboBox;
-    private javax.swing.JButton returnButton;
     // End of variables declaration//GEN-END:variables
 }
