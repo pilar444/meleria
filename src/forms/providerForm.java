@@ -1,6 +1,7 @@
 //yanina gonzalez
 package forms;
 
+import classes.City;
 import classes.Person;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -186,18 +187,22 @@ public class providerForm extends javax.swing.JFrame {
     }//GEN-LAST:event_adressAddButtonActionPerformed
 
     private void addProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProviderButtonActionPerformed
-        Person provider = new Person();
-        provider.setName(nameProviderTextField.getText());
-        String nameCity = cityProviderComboBox.getSelectedItem().toString();
-        //provider.setCityCode(Integer.parseInt(cityCodeProviderTextField.getText()));
-        //provider.setStreetNumber(Integer.parseInt(streetNumberProviderTextField.getText()));
-        provider.setPhone(Integer.parseInt(phoneProviderTextField.getText()));
-        //client.setMail(mailProviderTextField.getText()); //no esta en la base
-        provider.setLow(true);
-        try {
-            provider.insertarPersona();
+        try {                                                  
+            Person provider = new Person();
+            provider.setName(nameProviderTextField.getText());
+            String nameCity = cityProviderComboBox.getSelectedItem().toString();
+            provider.setCityCode(City.getByName(nameCity).getCityCode());
+            //provider.setStreetNumber(Integer.parseInt(streetNumberProviderTextField.getText()));
+            provider.setPhone(Integer.parseInt(phoneProviderTextField.getText()));
+            //client.setMail(mailProviderTextField.getText()); //no esta en la base
+            provider.setLow(true);
+            try {
+                provider.insertarPersona();
+            } catch (Exception ex) {
+                Logger.getLogger(trademarkAdd.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (Exception ex) {
-            Logger.getLogger(trademarkAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(providerForm.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_addProviderButtonActionPerformed
 
