@@ -20,8 +20,17 @@ public class Item {
     private float costPrice;
     private String observation;
     private int brandCode; //codigo de marca
-    
+    private boolean low;
     // Getters and Setters methods
+
+    public boolean getLow() {
+        return low;
+    }
+
+    public void setLow(boolean low) {
+        this.low = low;
+    }
+    
 
     public int getItemCode() {
         return itemCode;
@@ -94,7 +103,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * from articulos order by ART_CODART");
+           String laConsulta = ("select * from ARTICULOS order by ART_CODART where ART_BAJA = 0"); //que este activo
 
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.executeQuery();
@@ -134,7 +143,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM articulos WHERE ART_NOMBRE = ?");
+           String laConsulta = ("select * FROM ARTICULOS WHERE ART_NOMBRE = ? and ART_BAJA = 0");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setString(1, name);
         stmtlaConsulta.executeQuery();
@@ -168,7 +177,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM articulos WHERE ART_CODRUB = ?");
+           String laConsulta = ("select * FROM ARTICULOS WHERE ART_CODRUB = ? and ART_BAJA = 0");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, headingCode);
         stmtlaConsulta.executeQuery();
@@ -202,7 +211,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM articulos WHERE ART_CODMARC = ?");
+           String laConsulta = ("select * FROM ARTICULOS WHERE ART_CODMARC = ? and ART_BAJA = 0");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, brandCode);
         stmtlaConsulta.executeQuery();
@@ -236,8 +245,8 @@ public class Item {
            conn = bs.getConnection();
            // realización de la consulta
                   
-        String laInsercion = "INSERT INTO `articulos` (`ART_CODART` , `ART_NOMBRE`, `ART_CODRUB`, `ART_STOCK`,`ART_PRECIOVENT`,`ART_PRECIOCOST`,`ART_OBSERV`, `ART_CODMARC`)" +
-                              "VALUES (?,?, ?, ? , ?, ?, ? , ?)";
+        String laInsercion = "INSERT INTO `ARTICULOS` (`ART_CODART` , `ART_NOMBRE`, `ART_CODRUB`, `ART_STOCK`,`ART_PRECIOVENT`,`ART_PRECIOCOST`,`ART_OBSERV`, `ART_CODMARC`, 'ART_BAJA')" +
+                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement stmtInsercion = conn.prepareStatement(laInsercion);
 
@@ -249,6 +258,7 @@ public class Item {
         stmtInsercion.setFloat(6,this.getCostPrice());
         stmtInsercion.setString(7, this.getObservation());
         stmtInsercion.setInt(8, this.getBrandCode());
+        stmtInsercion.setBoolean(9, this.getLow());
         /*if (this.getCiudad()==0){
             stmtInsercion.setNull(3, java.sql.Types.NULL);
         }else{
@@ -272,7 +282,8 @@ public class Item {
            conn = bs.getConnection();
            // realización de la consulta
            // Arma la sentencia de actualizacion
-        String laActualizacion = "UPDATE articulos " +
+           // RECORDAR WHERE ART_BAJA=0
+        String laActualizacion = "UPDATE ARTICULOS " +
                                  "SET `ART_CODART`=?, `ART_NOMBRE`=?, `ART_CODRUB`=?,`ART_STOCK`=?,`ART_PRECIOVENT`=?,`ART_PRECIOCOST`=?, `ART_OBSERV`=?,`ART_CODMARC`=? ";
 
         PreparedStatement stmtlaActualizacion = conn.prepareStatement(laActualizacion);
@@ -299,22 +310,23 @@ public class Item {
 
     }
         
-    //copié y pegue el metodo eliminar de la clase Brand
-    /*    public void deleteItem(String nameItem) throws Exception {
-        Item i = new Item ();
+    //ELIMINAR
+       public static void deleteItem(Integer itemCode) throws Exception {
+        
         Connection conn = null;
         try {
            conn = bs.getConnection();
            // realización de la consulta
            // Arma la sentencia de eliminacion
-        String laEliminacion = ("DELETE FROM ARTICULOS WHERE ART_NOMBRE = ?");
+        String laEliminacion = ("UPDATE ARTICULOS SET ART_BAJA = ? WHERE ART_COD = ?");
 
         // Informa la eliminacion a realizar
         System.out.println(">>SQL: " + laEliminacion);
 
         // Ejecuta la eliminacion
         PreparedStatement stmtEliminacion = conn.prepareStatement(laEliminacion);
-        stmtEliminacion.setInt(1, this.getName());
+        stmtEliminacion.setBoolean(1, true); //inhabilitado
+        stmtEliminacion.setInt(2, itemCode); //el codigo que me llega
         stmtEliminacion.execute();
 
         // Cierra el Statement
@@ -325,7 +337,7 @@ public class Item {
            if (null != bs)
               bs.close();
         }          
-    }*/
+    }
         
         
  
