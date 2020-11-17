@@ -19,8 +19,9 @@ public class articleInfoAdd extends javax.swing.JFrame {
     /**
      * Creates new form articleInfoAdd
      */
-    public articleInfoAdd() {
+    public articleInfoAdd(Item r) {
         initComponents();
+        codArtLabel.setText(Integer.toString(r.getItemCode()));
     }
 
     /**
@@ -252,11 +253,11 @@ public class articleInfoAdd extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new articleInfoAdd().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
