@@ -181,7 +181,7 @@ public class articlesModify extends javax.swing.JFrame {
                         .addGap(71, 71, 71)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cancelButton)

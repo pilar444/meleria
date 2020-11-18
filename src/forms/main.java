@@ -31,7 +31,6 @@ public class main extends javax.swing.JFrame {
         itemButton = new javax.swing.JButton();
         clientButton = new javax.swing.JButton();
         providerButton = new javax.swing.JButton();
-        adminButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,12 +76,6 @@ public class main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(providerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 230, 50));
-
-        adminButton.setBackground(new java.awt.Color(255, 255, 255));
-        adminButton.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        adminButton.setForeground(new java.awt.Color(102, 102, 102));
-        adminButton.setText("ADMIN");
-        getContentPane().add(adminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 220, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo.jpg"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -159,7 +152,6 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton adminButton;
     private javax.swing.JButton clientButton;
     private javax.swing.JButton itemButton;
     private javax.swing.JLabel jLabel1;
