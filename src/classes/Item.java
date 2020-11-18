@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class Item {
@@ -103,7 +106,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * from articulos order by ART_CODART where ART_BAJA = 0"); //que este activo
+           String laConsulta = ("select * from articulos order by ART_CODART where ART_BAJA = '0'"); //que este activo
 
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.executeQuery();
@@ -119,7 +122,7 @@ public class Item {
                 I.setStock(rs.getInt("ART_STOCK"));
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
-                I.setObservation(rs.getString("OBSERV"));
+                I.setObservation(rs.getString("ART_OBSERV"));
                 I.setHeadingCode(rs.getInt("ART_CODMARC"));
                 
                 articulos.add(I);
@@ -143,7 +146,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM articulos WHERE ART_NOMBRE = ? and ART_BAJA = 0");
+           String laConsulta = ("select * FROM articulos WHERE ART_NOMBRE = ? and ART_BAJA = '0'");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setString(1, name);
         stmtlaConsulta.executeQuery();
@@ -156,7 +159,7 @@ public class Item {
                 I.setStock(rs.getInt("ART_STOCK"));
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
-                I.setObservation(rs.getString("OBSERV"));
+                I.setObservation(rs.getString("ART_OBSERV"));
                 I.setHeadingCode(rs.getInt("ART_CODMARC"));   
          }
         stmtlaConsulta.close();
@@ -177,7 +180,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM articulos WHERE ART_CODRUB = ? and ART_BAJA = 0");
+           String laConsulta = ("select * FROM articulos WHERE ART_CODRUB = ? and ART_BAJA = '0'");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, headingCode);
         stmtlaConsulta.executeQuery();
@@ -190,7 +193,7 @@ public class Item {
                 I.setStock(rs.getInt("ART_STOCK"));
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
-                I.setObservation(rs.getString("OBSERV"));
+                I.setObservation(rs.getString("ART_OBSERV"));
                 I.setHeadingCode(rs.getInt("ART_CODMARC"));   
          }
         stmtlaConsulta.close();
@@ -211,7 +214,7 @@ public class Item {
         try {
            conn = bs.getConnection();
            // realización de la consulta
-           String laConsulta = ("select * FROM articulos WHERE ART_CODMARC = ? and ART_BAJA = 0");
+           String laConsulta = ("select * FROM articulos WHERE ART_CODMARC = ? and ART_BAJA = '0'");
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, brandCode);
         stmtlaConsulta.executeQuery();
@@ -224,7 +227,7 @@ public class Item {
                 I.setStock(rs.getInt("ART_STOCK"));
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
-                I.setObservation(rs.getString("OBSERV"));
+                I.setObservation(rs.getString("ART_OBSERV"));
                 I.setHeadingCode(rs.getInt("ART_CODMARC"));   
          }
         stmtlaConsulta.close();
@@ -309,6 +312,45 @@ public class Item {
         }      
 
     }
+     public static void cargarTabla(String valor, JTable table) throws ClassNotFoundException, SQLException {
+        
+        Connection conn = null;
+        try {
+           conn = bs.getConnection();
+           //realizaciÃ³n de la consulta
+            DefaultTableModel mx = (DefaultTableModel) table.getModel();
+            while (mx.getRowCount() > 0) {
+                mx.setRowCount(0);
+            }
+           
+            
+            String laConsulta = "SELECT ART_CODART, ART_NOMBRE FROM articulos WHERE (ART_NOMBRE LIKE '%" + valor +  "%' OR ART_CODART LIKE '%" + valor + "%') and ART_BAJA = '0' order by ART_NOMBRE";
+            PreparedStatement stmtConsulta = conn.prepareStatement(laConsulta);
+            stmtConsulta.execute();
+            ResultSet consulta = (ResultSet) stmtConsulta.getResultSet();
+            
+            while (consulta.next()) {
+                
+                DefaultTableModel temp = (DefaultTableModel) table.getModel();
+                Object nuevo[] = {
+
+                    consulta.getString("ART_CODART"),
+                    consulta.getString("ART_NOMBRE"),
+                       
+                };
+                temp.addRow(nuevo);
+                
+            }
+            stmtConsulta.close();
+        } catch (SQLException e) {
+           // tratamiento de error
+        } finally {
+           if (null != conn)
+              conn.close();
+        }
+            
+       
+        }
         
     //ELIMINAR
        public static void deleteItem(Integer itemCode) throws Exception {
@@ -318,15 +360,16 @@ public class Item {
            conn = bs.getConnection();
            // realización de la consulta
            // Arma la sentencia de eliminacion
-        String laEliminacion = ("UPDATE articulos SET ART_BAJA = ? WHERE ART_COD = ?");
+           
+
+        String laEliminacion = ("UPDATE articulos SET ART_BAJA = '1' WHERE ART_CODART = ?");
 
         // Informa la eliminacion a realizar
         System.out.println(">>SQL: " + laEliminacion);
 
         // Ejecuta la eliminacion
         PreparedStatement stmtEliminacion = conn.prepareStatement(laEliminacion);
-        stmtEliminacion.setBoolean(1, true); //inhabilitado
-        stmtEliminacion.setInt(2, itemCode); //el codigo que me llega
+        stmtEliminacion.setInt(1, itemCode); //el codigo que me llega
         stmtEliminacion.execute();
 
         // Cierra el Statement
