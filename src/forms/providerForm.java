@@ -3,6 +3,7 @@ package forms;
 
 import classes.City;
 import classes.Person;
+import classes.Street;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -192,9 +193,8 @@ public class providerForm extends javax.swing.JFrame {
             provider.setName(nameProviderTextField.getText());
             String nameCity = cityProviderComboBox.getSelectedItem().toString();
             provider.setCityCode(City.getByName(nameCity).getCityCode());
-            // String nameStreet = adressProviderComboBox.getSelectedItem().toString();
-            // provider.setStreetCode(Street.getByName(nameStreet).getStreetCode()); 
-            //provider.setStreetNumber(Integer.parseInt(streetNumberProviderTextField.getText()));
+            String nameStreet = adressProviderComboBox.getSelectedItem().toString();
+            provider.setStreetCode(Street.getByName(nameStreet).getStreetCode()); 
             provider.setPhone(Integer.parseInt(phoneProviderTextField.getText()));
             provider.setLow(true);
             try {
