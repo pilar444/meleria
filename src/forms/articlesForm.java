@@ -147,7 +147,7 @@ public class articlesForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        trademarkAdd form = new trademarkAdd();
+        articlesAdd form = new articlesAdd();
         form.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
