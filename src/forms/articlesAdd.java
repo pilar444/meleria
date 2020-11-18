@@ -468,6 +468,16 @@ public class articlesAdd extends javax.swing.JFrame {
 
         //newItem.save;
         
+        /*newItem.setBrandCode(FRAMEBITS);
+        newItem.setCostPrice(TOP_ALIGNMENT);
+        newItem.setHeadingCode(HEIGHT);
+        newItem.setItemCode(ERROR);
+        newItem.setName(codField.getText());
+        //newItem.setObservation(observation);
+        newItem.setSalePrice(TOP_ALIGNMENT);
+        newItem.setStock(ABORT);*/
+        //newItem.setLow(false);
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -194,7 +194,6 @@ public class providerForm extends javax.swing.JFrame {
             provider.setCityCode(City.getByName(nameCity).getCityCode());
             //provider.setStreetNumber(Integer.parseInt(streetNumberProviderTextField.getText()));
             provider.setPhone(Integer.parseInt(phoneProviderTextField.getText()));
-            //client.setMail(mailProviderTextField.getText()); //no esta en la base
             provider.setLow(true);
             try {
                 provider.insertarPersona();
