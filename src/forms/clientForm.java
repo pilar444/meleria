@@ -50,7 +50,6 @@ public class clientForm extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         infoClientButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
-        facButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,7 +79,12 @@ public class clientForm extends javax.swing.JFrame {
 
         jButton8.setText("ELIMINAR");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/lupa.gif"))); // NOI18N
@@ -254,7 +258,7 @@ public class clientForm extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 50, -1, -1));
 
-        deleteButton.setText("ELIMINAR");
+        deleteButton.setText("Eliminar");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -262,7 +266,7 @@ public class clientForm extends javax.swing.JFrame {
         });
         getContentPane().add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 83, -1));
 
-        infoClientButton.setText("VER DETALLE");
+        infoClientButton.setText("Ver detalle");
         infoClientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 infoClientButtonActionPerformed(evt);
@@ -276,10 +280,7 @@ public class clientForm extends javax.swing.JFrame {
                 returnButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(returnButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(678, 381, 83, -1));
-
-        facButton.setText("FACTURACIÓN");
-        getContentPane().add(facButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        getContentPane().add(returnButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 83, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -315,6 +316,7 @@ public class clientForm extends javax.swing.JFrame {
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         main form = new main();
         form.setVisible(true);
+        dispose();
     }//GEN-LAST:event_returnButtonActionPerformed
 
     private void infoClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoClientButtonActionPerformed
@@ -326,42 +328,16 @@ public class clientForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        main form = new main();
+        form.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(clientForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(clientForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(clientForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(clientForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new clientForm().setVisible(true);
-            }
-        });
-    }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClientButton;
     private javax.swing.JButton adressAddButton;
@@ -371,7 +347,6 @@ public class clientForm extends javax.swing.JFrame {
     private javax.swing.JButton cityAddButton;
     private javax.swing.JComboBox<String> cityClientComboBox;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JButton facButton;
     private javax.swing.JButton infoClientButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -24,6 +24,7 @@ public class Item {
     private String observation;
     private int brandCode; //codigo de marca
     private boolean low;
+    
     // Getters and Setters methods
 
     public boolean getLow() {
@@ -123,7 +124,7 @@ public class Item {
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
                 I.setObservation(rs.getString("ART_OBSERV"));
-                I.setHeadingCode(rs.getInt("ART_CODMARC"));
+                I.setBrandCode(rs.getInt("ART_CODMARC"));
                 
                 articulos.add(I);
          }
@@ -155,12 +156,12 @@ public class Item {
         while(rs.next()){
                 I.setItemCode(rs.getInt("ART_CODART"));
                 I.setName(rs.getString("ART_NOMBRE"));
-                I.setHeadingCode(rs.getInt("ART_CODRUB"));
+                I.setBrandCode(rs.getInt("ART_CODMARC"));
                 I.setStock(rs.getInt("ART_STOCK"));
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
                 I.setObservation(rs.getString("ART_OBSERV"));
-                I.setHeadingCode(rs.getInt("ART_CODMARC"));   
+                I.setHeadingCode(rs.getInt("ART_CODRUB"));   
          }
         stmtlaConsulta.close();
         } catch (SQLException e) {
@@ -194,7 +195,7 @@ public class Item {
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
                 I.setObservation(rs.getString("ART_OBSERV"));
-                I.setHeadingCode(rs.getInt("ART_CODMARC"));   
+                I.setBrandCode(rs.getInt("ART_CODMARC"));   
          }
         stmtlaConsulta.close();
         } catch (SQLException e) {
@@ -228,7 +229,7 @@ public class Item {
                 I.setSalePrice(rs.getFloat("ART_PRECIOVENT"));
                 I.setCostPrice(rs.getFloat("ART_PRECIOCOST"));
                 I.setObservation(rs.getString("ART_OBSERV"));
-                I.setHeadingCode(rs.getInt("ART_CODMARC"));   
+                I.setBrandCode(rs.getInt("ART_CODMARC"));   
          }
         stmtlaConsulta.close();
         } catch (SQLException e) {
@@ -278,7 +279,7 @@ public class Item {
         }
     }
         
-        public void modificarArticulo() throws Exception    {
+        public void modificarArticulo(int artcod) throws Exception    {
 
         Connection conn = null;
         try {
@@ -286,22 +287,23 @@ public class Item {
            // realización de la consulta
            // Arma la sentencia de actualizacion
            // RECORDAR WHERE ART_BAJA=0
-        String laActualizacion = "UPDATE articulos " +
-                                 "SET `ART_CODART`=?, `ART_NOMBRE`=?, `ART_CODRUB`=?,`ART_STOCK`=?,`ART_PRECIOVENT`=?,`ART_PRECIOCOST`=?, `ART_OBSERV`=?,`ART_CODMARC`=? ";
+        String laActualizacion = "UPDATE articulos SET `ART_CODART` = ?, `ART_NOMBRE` = ?, `ART_CODMARC` = ?, `ART_STOCK` = ?, `ART_PRECIOVENT` = ?, `ART_PRECIOCOST` = ?, `ART_OBSERV` = ?, `ART_CODRUB` = ?, `ART_BAJA` = ? WHERE `ART_CODART` = ?";
 
         PreparedStatement stmtlaActualizacion = conn.prepareStatement(laActualizacion);
-
+        
         stmtlaActualizacion.setInt(1,this.getItemCode());
         stmtlaActualizacion.setString(2,this.getName());
-        stmtlaActualizacion.setInt(3,this.getHeadingCode());
+        stmtlaActualizacion.setInt(3,this.getBrandCode());
         stmtlaActualizacion.setInt(4,this.getStock());
         stmtlaActualizacion.setFloat(5,this.getSalePrice());
         stmtlaActualizacion.setFloat(6,this.getCostPrice());
         stmtlaActualizacion.setString(7,this.getObservation());
         stmtlaActualizacion.setInt(8,this.getHeadingCode());
+        stmtlaActualizacion.setBoolean(9, false);
+        stmtlaActualizacion.setInt(10,artcod);
         
         stmtlaActualizacion.execute();
-
+        
         // Cierra el Statement
         stmtlaActualizacion.close();
         } catch (SQLException e) {

@@ -5,10 +5,13 @@
  */
 package forms;
 //yanina
+import classes.Brand;
+import classes.Heading;
 import classes.Item;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +27,7 @@ public class articlesModify extends javax.swing.JFrame {
     }
     
     Item article;
+    int artcod;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +70,11 @@ public class articlesModify extends javax.swing.JFrame {
         jLabel1.setText("MODIFICAR ARTICULO");
 
         jButton4.setText("Modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancelar");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -234,6 +243,64 @@ public class articlesModify extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int respuesta = JOptionPane.showConfirmDialog(null,"MODIFICAR", "¿ESTA SEGURO QUE QUIERE MODIFICAR?", JOptionPane.YES_NO_CANCEL_OPTION);
+ 
+        if (respuesta==0){
+        
+            boolean cambios = false;
+
+
+            if (Integer.parseInt(jTextField1.getText()) != article.getItemCode() && !jTextField1.getText().equals("")){
+                article.setItemCode(Integer.parseInt(jTextField1.getText()));
+                cambios=true;
+            }
+            if (!jTextField2.getText().equals(article.getName()) && !jTextField2.getText().equals("")){
+                article.setName(jTextField2.getText());
+                cambios=true;
+            }
+            if (Integer.parseInt(jTextField3.getText()) != article.getBrandCode() && !jTextField3.getText().equals("")){
+                article.setBrandCode(Integer.parseInt(jTextField3.getText()));
+                cambios=true;
+            }
+            if (Float.parseFloat(jTextField4.getText()) != article.getSalePrice()&& !jTextField4.getText().equals("")){
+                article.setSalePrice(Float.parseFloat(jTextField4.getText()));
+                cambios=true;
+            }
+            if (Float.parseFloat(jTextField5.getText()) != article.getCostPrice()&& !jTextField5.getText().equals("")){
+                article.setCostPrice(Float.parseFloat(jTextField5.getText()));
+                cambios=true;
+            }
+            if (Integer.parseInt(jTextField6.getText()) != article.getStock()&& !jTextField6.getText().equals("")){
+                article.setStock(Integer.parseInt(jTextField6.getText()));
+                cambios=true;
+            }
+            if (!jTextField7.getText().equals(article.getObservation()) && !jTextField7.getText().equals("")){
+                article.setObservation(jTextField7.getText());
+                cambios=true;
+            }
+            if (Integer.parseInt(jTextField8.getText()) != article.getHeadingCode()&& !jTextField8.getText().equals("")){
+                article.setHeadingCode(Integer.parseInt(jTextField8.getText()));
+                cambios=true;
+            }
+
+
+            if (cambios==true){
+
+                try {
+                    article.modificarArticulo(artcod);
+                    JOptionPane.showMessageDialog(null, "Los campos han sido modificados");
+                    changeFields();
+
+                } catch (Exception ex) {
+                    Logger.getLogger(articlesModify.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No han habido cambios");
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
@@ -258,15 +325,15 @@ public class articlesModify extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 
-    public void changeFields() {
+    public void changeFields() throws Exception {
         jTextField1.setText(String.valueOf(article.getItemCode()));
         jTextField2.setText(article.getName());
-        //jTextField3.setText(String.valueOf(article.getItemCode()));
+        jTextField3.setText(String.valueOf(article.getBrandCode()));
         jTextField4.setText(String.valueOf(article.getSalePrice()));
         jTextField5.setText(String.valueOf(article.getCostPrice()));
         jTextField6.setText(String.valueOf(article.getStock()));
         jTextField7.setText(article.getObservation());
-        //jTextField8.setText(String.valueOf(article.getItemCode()));
+        jTextField8.setText(String.valueOf(article.getHeadingCode()));
          
     }
 }

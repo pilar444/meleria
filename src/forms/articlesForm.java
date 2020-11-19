@@ -149,6 +149,7 @@ public class articlesForm extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         articlesAdd form = new articlesAdd();
         form.setVisible(true);
+        dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed

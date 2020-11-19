@@ -48,7 +48,7 @@ public class Heading {
         ArrayList rubros = new ArrayList();
         try {
            conn = bs.getConnection(); 
-           String consRub = ("select * from rubros order by RUB_CODRUB");
+           String consRub = ("select * from rubros order by RUB_CODRUB and RUB_BAJA=0 ");
 
         PreparedStatement consdRub = conn.prepareStatement(consRub);
         consdRub.executeQuery();
@@ -79,7 +79,7 @@ public class Heading {
         return(rubros);
     }
     
-    //BUSCAR POR NOMBRE
+    //BUSCAR NOMBRE POR CODIGO
     public static String nombreRubro(int cod) throws Exception{
 
         String nomrub = "";
@@ -87,15 +87,17 @@ public class Heading {
         Connection conn = null;
         try {
            conn = bs.getConnection(); 
-           String consRub = ("SELECT RUB_NOMBRE from RUBROS where RUB_CODRUB = ? ");
+           String consRub = ("SELECT RUB_NOMBRE from rubros where RUB_CODRUB = ? and RUB_BAJA=0 ");
 
         PreparedStatement consdRub = conn.prepareStatement(consRub);
         consdRub.setInt(1, cod);
         consdRub.execute();
-
+        
+        
         ResultSet rs = (ResultSet) consdRub.getResultSet();
         if (rs.next()) {
             nomrub = rs.getString("RUB_NOMBRE");
+            
         }
         } catch (SQLException e) {
            
@@ -114,7 +116,7 @@ public class Heading {
         int cant=0;
         try {
            conn = bs.getConnection();
-        String consRub = "SELECT count(*) as 'cantidad' FROM RUBROS WHERE RUB_NOMBRE=?";
+        String consRub = "SELECT count(*) as 'cantidad' FROM RUBROS WHERE RUB_NOMBRE=? and RUB_BAJA=0 ";
         PreparedStatement consdRub =conn.prepareStatement(consRub);
         consdRub.setString(1,nomrub);
 
@@ -141,7 +143,7 @@ public class Heading {
        Connection conn = null;
         try {
            conn = bs.getConnection(); 
-        String elimRub = ("DELETE FROM RUBROS WHERE RUB_CODRUB = ?");
+        String elimRub = ("DELETE FROM RUBROS WHERE RUB_CODRUB = ? and RUB_BAJA=0 ");
 
         System.out.println(">>SQL: " + elimRub );
 

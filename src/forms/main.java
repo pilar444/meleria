@@ -53,7 +53,7 @@ public class main extends javax.swing.JFrame {
                 itemButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(itemButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 50));
+        getContentPane().add(itemButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 50));
 
         clientButton.setBackground(new java.awt.Color(255, 255, 255));
         clientButton.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
@@ -64,7 +64,7 @@ public class main extends javax.swing.JFrame {
                 clientButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(clientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 230, 50));
+        getContentPane().add(clientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 360, 50));
 
         providerButton.setBackground(new java.awt.Color(255, 255, 255));
         providerButton.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
@@ -75,7 +75,7 @@ public class main extends javax.swing.JFrame {
                 providerButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(providerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 230, 50));
+        getContentPane().add(providerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 270, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondo.jpg"))); // NOI18N
         jLabel1.setToolTipText("");
@@ -101,11 +101,13 @@ public class main extends javax.swing.JFrame {
     private void clientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientButtonActionPerformed
         clientForm form = new clientForm();
         form.setVisible(true);
+        dispose();
     }//GEN-LAST:event_clientButtonActionPerformed
 
     private void providerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerButtonActionPerformed
         providerForm form = new providerForm();
         form.setVisible(true);
+        dispose();
     }//GEN-LAST:event_providerButtonActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

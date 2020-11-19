@@ -50,7 +50,7 @@ public class Brand {
         try {
            conn = bs.getConnection(); //ACÁ DECÍA "BS" LO CAMBIÉ POR EL NOMBRE DE NUESTRA BASE
            // realización de la consulta
-           String laConsulta = ("select * from marcas order by MAR_CODMARC");
+           String laConsulta = ("select * from marcas order by MAR_CODMARC and MAR_BAJA=0");
 
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.executeQuery();
@@ -80,7 +80,7 @@ public class Brand {
         return(marcas);
     }
     
-    //BUSCAR POR NOMBRE
+    //BUSCAR NOMBRE POR CODIGO
     public static String nombreMarca(int cod) throws Exception{
 
         String nom="";
@@ -89,7 +89,7 @@ public class Brand {
         try {
            conn = bs.getConnection(); //LO MISMO ACÁ
            // realización de la consulta
-           String laConsulta = ("SELECT MARC_NOMBRE from MARCAS where MAR_CODMARC= ? ");
+           String laConsulta = ("SELECT MAR_NOMBRE from marcas where MAR_CODMARC= ? and MAR_BAJA=0");
 
         PreparedStatement stmtlaConsulta = conn.prepareStatement(laConsulta);
         stmtlaConsulta.setInt(1, cod);
@@ -97,7 +97,7 @@ public class Brand {
 
         ResultSet rs = (ResultSet) stmtlaConsulta.getResultSet();
         if (rs.next()) {
-            nom = rs.getString("MARC_NOMBRE");
+            nom = rs.getString("MAR_NOMBRE");
         }
         } catch (SQLException e) {
            // tratamiento de error
@@ -118,7 +118,7 @@ public class Brand {
            conn = bs.getConnection();
            // realización de la consulta
            // Arma la consulta y la ejecuta
-        String laConsulta = "SELECT count(*) as 'cantidad' FROM MARCAS WHERE MAR_NOMBRE=?";
+        String laConsulta = "SELECT count(*) as 'cantidad' FROM marcas WHERE MAR_NOMBRE=? and MAR_BAJA=0";
         PreparedStatement stmtlaConsulta =conn.prepareStatement(laConsulta);
         stmtlaConsulta.setString(1,nom);
 
@@ -147,7 +147,7 @@ public class Brand {
            conn = bs.getConnection(); //ACÁ TAMBIÉN
            // realización de la consulta
            // Arma la sentencia de eliminacion
-        String laEliminacion = ("DELETE FROM MARCAS WHERE MAR_CODMARC = ?");
+        String laEliminacion = ("DELETE FROM marcas WHERE MAR_CODMARC = ? and MAR_BAJA=0");
 
         // Informa la eliminacion a realizar
         System.out.println(">>SQL: " + laEliminacion);

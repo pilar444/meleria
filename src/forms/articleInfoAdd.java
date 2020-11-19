@@ -5,6 +5,8 @@
  */
 package forms;
 
+import classes.Brand;
+import classes.Heading;
 import classes.Item;
 import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import java.sql.SQLException;
@@ -23,7 +25,7 @@ public class articleInfoAdd extends javax.swing.JFrame {
     /**
      * Creates new form articleInfoAdd
      */
-    public articleInfoAdd(Item r) {
+    public articleInfoAdd(Item r) throws Exception {
         initComponents();
         article = r;
         loadData();
@@ -217,10 +219,10 @@ public class articleInfoAdd extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aceptButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteItem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(aceptButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -282,7 +284,12 @@ public class articleInfoAdd extends javax.swing.JFrame {
         articlesModify arModify = new articlesModify();
         arModify.setVisible(true);
         arModify.article = article;
-        arModify.changeFields();
+        arModify.artcod = article.getItemCode();
+        try {
+            arModify.changeFields();
+        } catch (Exception ex) {
+            Logger.getLogger(articleInfoAdd.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -311,14 +318,14 @@ public class articleInfoAdd extends javax.swing.JFrame {
     private javax.swing.JLabel stockLabel;
     // End of variables declaration//GEN-END:variables
 
-    private void loadData() {
+    private void loadData() throws Exception {
         codArtLabel.setText(Integer.toString(article.getItemCode()));
         nameLabel1.setText(article.getName());
         stockLabel.setText(Integer.toString(article.getStock()));
         precioVentaLabel.setText(Float.toString(article.getSalePrice()));
         precioCostoLabel.setText(Float.toString(article.getCostPrice()));
-        //marcaLabel.setText(article.getBrandCode());
+        marcaLabel.setText(Brand.nombreMarca(article.getBrandCode()));
         observacionesLabel.setText(article.getObservation());
-        rubroLabel.setText(Integer.toString(article.getHeadingCode()));
+        rubroLabel.setText(Heading.nombreRubro(article.getHeadingCode()));
     }
 }
