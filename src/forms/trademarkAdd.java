@@ -80,6 +80,11 @@ public class trademarkAdd extends javax.swing.JFrame {
         jLabel1.setText("AÑADIR MARCA");
 
         AceptButton.setText("Aceptar");
+        AceptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Eliminar");
 
@@ -132,6 +137,10 @@ public class trademarkAdd extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void AceptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AceptButtonActionPerformed
 
     /**
      * @param args the command line arguments
