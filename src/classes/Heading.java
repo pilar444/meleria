@@ -40,7 +40,41 @@ public class Heading {
     public void setLow(boolean Low) {
         this.Low = Low;
     }
-    
+    public static Heading searchHeadingByName(String nameHeading) throws Exception {
+
+        Connection conn = null;
+        Heading r = null;
+        
+        try {
+           conn = bs.getConnection();
+           // realizaciÃ³n de la consulta
+           String consult = ("select * from rubros where RUB_NOMBRE = ?");
+
+        PreparedStatement stmtconsult =conn.prepareStatement(consult);
+        stmtconsult.setString(1, nameHeading);
+        stmtconsult.executeQuery();
+        ResultSet rs = (ResultSet) stmtconsult.getResultSet();
+        
+
+        while(rs.next()){
+
+            r = new Heading();
+            r.setHeadingCode(rs.getInt("RUB_CODRUB"));
+            r.setName(rs.getString("RUB_NOMBRE"));
+
+         }
+        stmtconsult.close();
+
+        } catch (SQLException e) {
+           // tratamiento de error
+        } finally {
+           if (null != conn)
+              conn.close();
+        }
+
+        return(r);
+
+    }
     //BUSCAR RUBRO
     public static ArrayList buscarRubros() throws Exception {
 

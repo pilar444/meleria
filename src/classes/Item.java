@@ -249,8 +249,7 @@ public class Item {
            conn = bs.getConnection();
            // realización de la consulta
                   
-        String laInsercion = "INSERT INTO `articulos` (`ART_CODART` , `ART_NOMBRE`, `ART_CODRUB`, `ART_STOCK`,`ART_PRECIOVENT`,`ART_PRECIOCOST`,`ART_OBSERV`, `ART_CODMARC`, 'ART_BAJA')" +
-                              "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String laInsercion = "INSERT INTO `articulos` (`ART_CODART`, `ART_NOMBRE`, `ART_CODRUB`, `ART_STOCK`, `ART_PRECIOVENT`, `ART_PRECIOCOST`, `ART_OBSERV`, `ART_CODMARC`, `ART_BAJA`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         PreparedStatement stmtInsercion = conn.prepareStatement(laInsercion);
 

@@ -229,5 +229,40 @@ public class Brand {
               conn.close();
         }      
        
-        }       
+        } 
+        public static Brand searchBrandByName(String nameBrand) throws Exception {
+
+        Connection conn = null;
+        Brand r = null;
+        
+        try {
+           conn = bs.getConnection();
+           // realizaciÃ³n de la consulta
+           String consult = ("select * from marcas where MAR_NOMBRE = ?");
+
+        PreparedStatement stmtconsult =conn.prepareStatement(consult);
+        stmtconsult.setString(1, nameBrand);
+        stmtconsult.executeQuery();
+        ResultSet rs = (ResultSet) stmtconsult.getResultSet();
+        
+
+        while(rs.next()){
+
+            r = new Brand();
+                r.setBrandCode(rs.getInt("MAR_CODMARC"));
+                r.setName(rs.getString("MAR_NOMBRE"));
+
+         }
+        stmtconsult.close();
+
+        } catch (SQLException e) {
+           // tratamiento de error
+        } finally {
+           if (null != conn)
+              conn.close();
+        }
+
+        return(r);
+
+    }
     } 
